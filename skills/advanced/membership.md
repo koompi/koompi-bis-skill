@@ -34,6 +34,7 @@ mutation UpdateTier($teirId: String!, $name: String!, $target: MembershipTarget!
 ```
 
 ### Delete Tier
+> ⚠️ **CONFIRMATION REQUIRED** — Show tier name and warn that all memberships under this tier will be affected.
 ```graphql
 mutation DeleteTier($teirId: String!) {
   deleteTeir(teirId: $teirId)
@@ -84,6 +85,7 @@ mutation UpdateMembership($membershipId: String!, $tierId: String!, $isActive: B
 ```
 
 ### Delete Membership
+> ⚠️ **CONFIRMATION REQUIRED** — Show member name and tier before revoking. Wait for explicit "Yes".
 ```graphql
 mutation DeleteMembership($membershipId: String!) {
   deleteMembership(membershipId: $membershipId)

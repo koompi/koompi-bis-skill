@@ -120,6 +120,7 @@ mutation SetOnSale($shopId: String!, $productId: String!, $onSale: Boolean!) {
 ```
 
 ## Archive / Unarchive
+> ⚠️ **CONFIRMATION REQUIRED** — When archiving, summarize the product name and ask user to confirm.
 ```graphql
 mutation SetArchived($shopId: String!, $productId: String!, $archived: Boolean!) {
   productSetArchived(shopId: $shopId, productId: $productId, archived: $archived)
@@ -127,6 +128,7 @@ mutation SetArchived($shopId: String!, $productId: String!, $archived: Boolean!)
 ```
 
 ## Permanently Delete
+> ⚠️ **CONFIRMATION REQUIRED** — Show product name/price and warn this is irreversible. Wait for explicit "Yes".
 ```graphql
 mutation DeleteProduct($productId: String!, $shopId: String!) {
   productDelete(productId: $productId, shopId: $shopId)

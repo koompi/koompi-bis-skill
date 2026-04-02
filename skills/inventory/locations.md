@@ -40,12 +40,12 @@ mutation UpdateLocation($shopId: String!, $locationId: String!, $name: String, $
 ```
 
 ## Delete Location
+> ⚠️ **CONFIRMATION REQUIRED** — Show location name and warn this is permanent. Only empty locations can be deleted.
 ```graphql
 mutation DeleteLocation($shopId: String!, $locationId: String!) {
   deleteInventoryLocation(shopId: $shopId, locationId: $locationId)
 }
 ```
-**Warning**: Only delete empty locations. Locations with stock history cannot be removed.
 
 ## Set Default Location
 ```graphql

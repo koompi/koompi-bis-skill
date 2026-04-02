@@ -90,7 +90,7 @@ All prices are String type. Pagination defaults: limit 20, page 1.
 - **Price = String** — all monetary values are `String`, not `Float`
 - **One file at a time** — the router table in SKILL.md tells you which file to load
 - **`shopId` everywhere** — every operation needs it; resolve once at session start
-- **Confirm deletes** — ask the user before any destructive operation
+- **⚠️ Delete/Remove = ALWAYS confirm** — there are 16 destructive mutations across the skill files (listed in SKILL.md). The agent must **never** execute any of them without showing a summary and getting an explicit "Yes" or a Telegram confirmation button tap first
 
 ## API Reference
 

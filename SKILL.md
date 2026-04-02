@@ -103,10 +103,33 @@ UsageTarget:     EVERY_ONE | MEMBERSHIP | COUPON
 
 1. **Resolve IDs first.** When a user refers to a product/category/brand by name, always run a search or list query to get the `id` before mutating.
 2. **Price = String.** All monetary values (`price`, `amount`, `unitPrice`) are passed as `String` in GraphQL to preserve decimal precision.
-3. **Confirm destructive ops.** Before deleting, cancelling, or completing an order, summarize the action and ask user to confirm.
-4. **shopId is always required.** Every query/mutation requires `shopId`. Resolve it once at the start of a conversation via `ownedShops` or `joinedShops`.
-5. **Pagination.** List queries return `{ data, limit, skip, totalPages, totalDocuments }`. Default to `limit: 20, page: 1`.
-6. **Soft delete.** Products are archived (`productSetArchived`), not hard-deleted. Use `productDelete` only when the user explicitly says "permanently delete."
+3. **shopId is always required.** Every query/mutation requires `shopId`. Resolve it once at the start of a conversation via `ownedShops` or `joinedShops`.
+4. **Pagination.** List queries return `{ data, limit, skip, totalPages, totalDocuments }`. Default to `limit: 20, page: 1`.
+5. **Soft delete.** Products are archived (`productSetArchived`), not hard-deleted. Use `productDelete` only when the user explicitly says "permanently delete."
+
+### ⚠️ Destructive Operations — ALWAYS Require Confirmation
+
+**NEVER execute any of these mutations without explicit user confirmation first.**
+Show a summary of what will be affected, then ask "Are you sure? Reply Yes to confirm" or send a Telegram inline button.
+
+| Mutation | What it does | File |
+|---|---|---|
+| `productDelete` | Permanently deletes a product | catalog/products.md |
+| `productSetArchived(archived: true)` | Archives (soft-deletes) a product | catalog/products.md |
+| `deleteCategory` | Deletes a category (products become uncategorized) | catalog/categories.md |
+| `deleteSubcategory` | Deletes a subcategory | catalog/categories.md |
+| `deleteBrand` | Deletes a brand (products lose brand) | catalog/brands.md |
+| `setOrderStatus(CANCELLED)` | Cancels an order (triggers stock reversal) | orders/lifecycle.md |
+| `deleteInventoryLocation` | Deletes a warehouse/store location | inventory/locations.md |
+| `shopRoleDelete` | Deletes a staff role | admin/team.md |
+| `shopMemberRemove` | Removes a team member from the shop | admin/team.md |
+| `deleteDeliveryOption` | Removes a delivery option | admin/shipping.md |
+| `deleteCoupon` | Deletes a coupon code | admin/discounts.md |
+| `deleteDiscountRule` | Deletes a discount rule | admin/discounts.md |
+| `deleteTeir` | Deletes a membership tier | advanced/membership.md |
+| `deleteMembership` | Revokes a user's membership | advanced/membership.md |
+| `deleteDns` | Removes custom domain | advanced/dns.md |
+| `pluginUninstall` | Uninstalls a plugin | advanced/plugins.md |
 
 ### Bootstrap Query (run first in every session)
 ```graphql

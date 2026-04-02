@@ -39,6 +39,7 @@ mutation UpdateCoupon($couponId: String!, $code: String!, $description: String, 
 ```
 
 ### Delete Coupon
+> ⚠️ **CONFIRMATION REQUIRED** — Show coupon code and confirm before deleting.
 ```graphql
 mutation DeleteCoupon($couponId: String!) {
   deleteCoupon(couponId: $couponId)
@@ -106,6 +107,7 @@ mutation UpdateDiscount($discountId: String!, $shopId: String!, ...) {
 ```
 
 ### Delete Discount Rule
+> ⚠️ **CONFIRMATION REQUIRED** — Show discount name/scope and confirm before deleting.
 ```graphql
 mutation DeleteDiscount($discountId: String!) {
   deleteDiscountRule(discountId: $discountId)

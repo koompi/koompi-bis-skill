@@ -103,6 +103,6 @@ mutation PosCreateOrder(
 ---
 
 ## Agent Notes
-- **Confirm before cancelling**: Always show order summary before calling `setOrderStatus(CANCELLED)`.
+- ⚠️ **CONFIRMATION REQUIRED for cancellation**: Always show order ID, items, and total before calling `setOrderStatus(CANCELLED)`. Wait for explicit "Yes".
 - **Stock implications**: `completeOrder` debits stock. `setOrderStatus(CANCELLED)` after confirmation may need stock reversal — the backend handles this automatically.
 - **Async creation**: `posCreateOrder` and `orderCreate` return a `ticketId` (queued). The actual order is created asynchronously. Inform user: "Order submitted, processing…"

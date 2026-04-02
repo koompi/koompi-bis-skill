@@ -39,6 +39,7 @@ mutation InstallPlugin($shopId: String!, $pluginId: String!, $config: String) {
 `config` is an optional JSON string for plugin-specific settings.
 
 ## Uninstall Plugin
+> ⚠️ **CONFIRMATION REQUIRED** — Show plugin name and warn that any plugin config will be lost.
 ```graphql
 mutation UninstallPlugin($shopId: String!, $pluginId: String!) {
   pluginUninstall(shopId: $shopId, pluginId: $pluginId)

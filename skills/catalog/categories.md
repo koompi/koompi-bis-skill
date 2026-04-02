@@ -40,12 +40,12 @@ mutation UpdateCategory($categoryId: String!, $name: String!, $shopId: String!, 
 ```
 
 ## Delete Category
+> ⚠️ **CONFIRMATION REQUIRED** — Show category name and warn that products will become uncategorized. Wait for explicit "Yes".
 ```graphql
 mutation DeleteCategory($categoryId: String!, $shopId: String!) {
   deleteCategory(categoryId: $categoryId, shopId: $shopId)
 }
 ```
-**Warning**: Products in this category will become uncategorized. Confirm with user first.
 
 ---
 
@@ -79,6 +79,7 @@ mutation UpdateSubcategory($subcategoryId: String!, $shopId: String!, $name: Str
 ```
 
 ### Delete Subcategory
+> ⚠️ **CONFIRMATION REQUIRED** — Show subcategory name and confirm before executing.
 ```graphql
 mutation DeleteSubcategory($shopId: String!, $subcategoryId: String!) {
   deleteSubcategory(shopId: $shopId, subcategoryId: $subcategoryId)

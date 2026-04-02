@@ -28,9 +28,9 @@ mutation UpdateBrand($shopId: String!, $brandId: String!, $name: String!, $logo:
 ```
 
 ## Delete Brand
+> ⚠️ **CONFIRMATION REQUIRED** — Show brand name and warn that products will lose their brand association. Wait for explicit "Yes".
 ```graphql
 mutation DeleteBrand($shopId: String!, $brandId: String!) {
   deleteBrand(shopId: $shopId, brandId: $brandId)
 }
 ```
-**Warning**: Products using this brand will lose their brand association. Confirm with user first.

@@ -59,6 +59,7 @@ mutation UpdateDeliveryOption($shopId: String!, $thirdPartyId: String!, $name: S
 ```
 
 ### Delete Option
+> ⚠️ **CONFIRMATION REQUIRED** — Show delivery option name and confirm before deleting.
 ```graphql
 mutation DeleteDeliveryOption($shopId: String!, $thirdPartyId: String!) {
   deleteDeliveryOption(shopId: $shopId, thirdPartyId: $thirdPartyId) {

@@ -17,6 +17,7 @@ mutation UpdateRole($roleId: String!, $shopId: String!, $title: String!, $action
 ```
 
 ### Delete Role
+> ⚠️ **CONFIRMATION REQUIRED** — Show role title and confirm before deleting.
 ```graphql
 mutation DeleteRole($roleId: String!, $shopId: String!) {
   shopRoleDelete(roleId: $roleId, shopId: $shopId)
@@ -51,6 +52,7 @@ mutation UpdateMember($shopId: String!, $memberId: String!, $roleId: String!) {
 ```
 
 ### Remove Member
+> ⚠️ **CONFIRMATION REQUIRED** — Show member name/username and role before removing. Wait for explicit "Yes".
 ```graphql
 mutation RemoveMember($shopId: String!, $memberId: String!) {
   shopMemberRemove(memberId: $memberId, shopId: $shopId)

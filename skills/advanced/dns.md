@@ -31,6 +31,7 @@ mutation UpdateDns($hostname: String!, $shopId: String!) {
 ```
 
 ## Delete Domain
+> ⚠️ **CONFIRMATION REQUIRED** — Show the hostname and warn that the shop's custom domain will stop working immediately.
 ```graphql
 mutation DeleteDns($shopId: String!) {
   deleteDns(shopId: $shopId)
