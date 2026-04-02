@@ -153,6 +153,6 @@ query ArchivedProducts($shopId: String!) {
 ---
 
 ## Agent Notes
-- **Images**: Upload files via `POST /uploads` first, get back a URL path like `/files/abc.webp`, then pass that path in the `images` array.
+- **Images**: Upload files via `POST https://api.riverbase.org/uploads/s3` (multipart, field name `file`, header `authorization: <token>`). Returns a full CDN URL like `https://cdn.riverbase.org/uuid.webp` — pass that URL in the `images` array. Images are auto-converted to WebP (800px max width).
 - **Variants vs Options**: `variants` are stock-tracked (Size L = separate SKU). `options` are non-stock (Sugar Level = no inventory impact). Use variants when the shop needs per-attribute stock tracking.
 - **Filtering tip**: Use `keyword` for text search. Use `filter.categories` to narrow by category ID array.

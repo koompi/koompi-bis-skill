@@ -102,7 +102,7 @@ All prices are String type. Pagination defaults: limit 20, page 1.
 | | |
 |---|---|
 | **GraphQL Endpoint** | `https://api.riverbase.org/graphql` |
-| **Upload Endpoint** | `https://api.riverbase.org/uploads` |
+| **Upload Endpoint** | `https://api.riverbase.org/uploads/s3` |
 | **Auth** | `Authorization: <token>` (no `Bearer` prefix) |
 | **Method** | `POST` with JSON body `{"query": "...", "variables": {...}}` |
 

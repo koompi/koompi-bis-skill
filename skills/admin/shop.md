@@ -35,7 +35,7 @@ mutation UpdateName($shopId: String!, $name: String!) {
 ```
 
 ## Update Logo
-Upload image first via `POST /uploads`, then:
+Upload image first via `POST /uploads/s3` (see SKILL.md for details), then:
 ```graphql
 mutation UpdateLogo($shopId: String!, $logo: String!) {
   shopUpdateLogo(shopId: $shopId, logo: $logo) { id logo }

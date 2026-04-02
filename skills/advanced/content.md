@@ -75,4 +75,4 @@ mutation CreateEvent(
 
 ## Agent Notes
 - **Posts vs Events**: Posts are blog articles. Events have a date, venue, and optional ticket price/capacity.
-- **Images**: Upload first via `POST /uploads`, then pass returned paths.
+- **Images**: Upload first via `POST /uploads/s3`, then pass returned CDN URLs.

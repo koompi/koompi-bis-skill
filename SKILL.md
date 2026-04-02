@@ -7,7 +7,8 @@
 | Key | Value |
 |---|---|
 | **GraphQL** | `https://api.riverbase.org/graphql` |
-| **Upload** | `https://api.riverbase.org/uploads` (multipart POST, returns URL path) |
+| **Upload** | `https://api.riverbase.org/uploads/s3` (multipart POST, field name `file`, returns full CDN URL) |
+| **Upload HQ** | `https://api.riverbase.org/uploads/s3/hq` (same but max 1920px instead of 800px) |
 | **Auth** | `Authorization: <USER_TOKEN>` header on all requests (no `Bearer` prefix) |
 | **Method** | `POST` with `Content-Type: application/json` body `{"query":"...","variables":{...}}` |
 
