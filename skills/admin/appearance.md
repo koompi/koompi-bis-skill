@@ -154,7 +154,7 @@ The `$theme` variable must be a JSON object matching this exact shape (all field
     "chart5": "hsl(27 87% 67%)"
   },
   "font": {
-    "source": "google",
+    "source": "Google",
     "google": {
       "family": "Inter",
       "weights": [400, 600, 700]
@@ -164,7 +164,7 @@ The `$theme` variable must be a JSON object matching this exact shape (all field
 }
 ```
 
-> **Critical:** The JSON uses `shop_id` (snake_case) inside the theme body, while the mutation argument is `shopId` (camelCase). Color fields like `cardForeground` are camelCase. The `font.source` value is lowercase `"google"` or `"custom"` (GraphQL enum serialized as string in JSON).
+> **Critical:** The JSON uses `shop_id` (snake_case) inside the theme body, while the mutation argument is `shopId` (camelCase). Color fields like `cardForeground` are camelCase. The `font.source` value must be capitalized: `"Google"` or `"Custom"`.
 
 ---
 
@@ -222,7 +222,7 @@ Colors use HSL format: `"hsl(210 65% 9%)"` or `"hsl(0, 0%, 100%)"`.
 
 ```json
 {
-  "source": "google",
+  "source": "Google",
   "google": {
     "family": "Poppins",
     "weights": [400, 600, 700]
@@ -242,7 +242,7 @@ Colors use HSL format: `"hsl(210 65% 9%)"` or `"hsl(0, 0%, 100%)"`.
 
 ```json
 {
-  "source": "custom",
+  "source": "Custom",
   "google": null,
   "custom": {
     "familyName": "MyBrandFont",
@@ -333,7 +333,7 @@ The frontend ships 8 built-in themes. When a user asks for a "style" or "vibe", 
         "chart5": "hsl(27 87% 67%)"
       },
       "font": {
-        "source": "google",
+        "source": "Google",
         "google": {
           "family": "Poppins",
           "weights": [400, 600, 700]
