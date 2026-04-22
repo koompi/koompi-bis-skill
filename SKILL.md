@@ -16,11 +16,42 @@
 | **Method** | `POST` with `Content-Type: application/json` body `{"query":"...","variables":{...}}` |
 
 ### Environment Variables
+
+Three variables are required to operate. Resolve them in this priority order:
+
+1. **Runtime env** — check if already set in the process environment
+2. **`.env` file** — search common workspace locations
+
+#### Resolution Steps (run at session start)
+
+```bash
+# Step 1: Check runtime env
+# If all three are set, skip to Step 2.
+env | grep -E 'RIVERBASE_API_URL|RIVERBASE_API_KEY|RIVERBASE_SHOP_ID'
+
+# Step 2: If not set, search for .env files in common agent workspace paths
+# The workspace directory varies by agent platform (zeroclaw, openclaw, etc.)
+# so search broadly:
+grep -rh 'RIVERBASE_API_URL\|RIVERBASE_API_KEY\|RIVERBASE_SHOP_ID' \
+  /zeroclaw-data/workspace/.env \
+  /openclaw-data/workspace/.env \
+  /data/workspace/.env \
+  /workspace/.env \
+  .env \
+  2>/dev/null
+
+# Step 3: If still not found, do a broader search:
+find / -maxdepth 4 -name '.env' -exec grep -l 'RIVERBASE' {} \; 2>/dev/null | head -5
 ```
-RIVERBASE_API_KEY=rb_live_817e53b08e90304d44476c59b123839de28ede45e3fda92be15bf5fadc9a32e0
-RIVERBASE_API_URL=https://staging-lite-api.riverbase.org/graphql
-RIVERBASE_SHOP_ID=69d63071b46ac83c4514a5b
-```
+
+#### Variables
+| Variable | Purpose |
+|---|---|
+| `RIVERBASE_API_URL` | GraphQL endpoint (staging or production) |
+| `RIVERBASE_API_KEY` | Auth token — use in `Authorization` header (no `Bearer` prefix) |
+| `RIVERBASE_SHOP_ID` | Default shop to operate on |
+
+> **Never hardcode these values in the skill files.** They must only come from the runtime environment or `.env` file.
 
 ---
 

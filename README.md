@@ -133,12 +133,45 @@ git clone https://github.com/koompi/koompi-biz-skill.git
 - Shop layout, theme, or CMS features are added/changed
 
 ### Environment Variables for Agents
+
+Agents need three variables to connect. Resolve them in priority order:
+
+1. **Runtime env** — check if already set in the shell environment
+2. **`.env` file** — search common agent workspace locations
+
+```bash
+# Check runtime env first
+env | grep -E 'RIVERBASE_API_URL|RIVERBASE_API_KEY|RIVERBASE_SHOP_ID'
+
+# If not set, search .env in common agent workspace paths
+# (varies by platform: zeroclaw, openclaw, etc.)
+grep -rh 'RIVERBASE_API_URL\|RIVERBASE_API_KEY\|RIVERBASE_SHOP_ID' \
+  /zeroclaw-data/workspace/.env \
+  /openclaw-data/workspace/.env \
+  /data/workspace/.env \
+  /workspace/.env \
+  .env \
+  2>/dev/null
+
+# Broader search if the above fails
+find / -maxdepth 4 -name '.env' -exec grep -l 'RIVERBASE' {} \; 2>/dev/null | head -5
 ```
-RIVERBASE_API_KEY=rb_live_817e53b08e90304d44476c59b123839de28ede45e3fda92be15bf5fadc9a32e0
+
+| Variable | Purpose |
+|---|---|
+| `RIVERBASE_API_URL` | GraphQL endpoint (staging or production) |
+| `RIVERBASE_API_KEY` | Auth token — use in `Authorization` header (no `Bearer` prefix) |
+| `RIVERBASE_SHOP_ID` | Default shop to operate on |
+
+Fallback defaults (staging):
+```
 RIVERBASE_API_URL=https://staging-lite-api.riverbase.org/graphql
-RIVERBASE_SHOP_ID=69d63071b46ac83c4514a5b
+RIVERBASE_API_KEY=<read from .env>
+RIVERBASE_SHOP_ID=<read from .env>
 ```
-Use `RIVERBASE_API_URL` as the GraphQL endpoint. For production, switch to `https://api.riverbase.org/graphql`.
+For production, set `RIVERBASE_API_URL=https://api.riverbase.org/graphql`.
+
+> **Never hardcode real API keys in the skill files.** They must only come from the runtime environment or `.env` file.
 
 ## License
 
