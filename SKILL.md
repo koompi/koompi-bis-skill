@@ -95,7 +95,9 @@ Load **only** the file relevant to the user's request:
 ### Shop Administration
 | File | Use when user says… |
 |---|---|
-| [admin/shop.md](skills/admin/shop.md) | "create shop", "rename shop", "activate", "set location", "customers", "notifications" |
+| [admin/shop.md](skills/admin/shop.md) | "create shop", "rename shop", "activate", "set location", "customers", "notifications", "set business category" |
+| [admin/seo.md](skills/admin/seo.md) | "meta title", "meta description", "SEO", "keywords", "favicon", "og image", "change shop name", "update logo" |
+| [admin/pages.md](skills/admin/pages.md) | "create page", "about us page", "terms", "privacy policy", "contact page", "custom page", "FAQ page" |
 | [admin/modules.md](skills/admin/modules.md) | "enable POS", "turn on stocking", "COD settings", "announcement", "business hours" |
 | [admin/team.md](skills/admin/team.md) | "add staff", "create role", "remove member" |
 | [admin/shipping.md](skills/admin/shipping.md) | "shipping fee", "delivery zones", "add delivery option" |
@@ -155,7 +157,7 @@ InventoryLocationType: WAREHOUSE | STORE | DISPLAY
 OperationalMode: OPEN | CLOSED | BUSY
 ShippingModel:   DISTANCE_BASED | ZONE_BASED | FLAT_RATE | THIRD_PARTY_ONLY
 CartMode:        DETAILS_ONLY | FULL_CHECKOUT
-CardStyle:       MINIMAL | DETAILED
+CardStyle:       MINIMAL | BORDERED | OVERLAY | GLASS
 ```
 
 ### Discount Enums
@@ -186,6 +188,7 @@ Show a summary of what will be affected, then ask "Are you sure? Reply Yes to co
 | `productSetArchived(archived: true)` | Archives (soft-deletes) a product | catalog/products.md |
 | `deleteCategory` | Deletes a category (products become uncategorized) | catalog/categories.md |
 | `deleteSubcategory` | Deletes a subcategory | catalog/categories.md |
+| `deletePage` | Deletes a custom page (URL will 404) | admin/pages.md |
 | `deleteBrand` | Deletes a brand (products lose brand) | catalog/brands.md |
 | `setOrderStatus(CANCELLED)` | Cancels an order (triggers stock reversal) | orders/lifecycle.md |
 | `deleteInventoryLocation` | Deletes a warehouse/store location | inventory/locations.md |
